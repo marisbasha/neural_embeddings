@@ -1,0 +1,97 @@
+hf_dataset: "anonymous-submission000/vocsim"
+data_dir: "E:\\datadir"
+plot_dir: "E:\\plotdir"
+subsets: [BS1, BS2, BS3, BC, HP, HS1, HS2, HW1, HW2, HU1, HU2] 
+batch_size: 400 
+distances: ['euclidean', 'cosine', 'spearman']
+features: ['mels', 'embeddings', 'embeddings_first', 'codecs']
+whisperseg_config:
+  songbirds:
+    datasets: [BS1, BS2, BS3, BC] 
+    min_freq: 0
+    spec_time_step: 0.0025
+    min_segment_length: 0.01
+    eps: 0.02
+    num_trials: 3
+  humans:
+    datasets: [HP, HS1, HS2, HW1, HW2, HU1, HU2] 
+    min_freq: 0
+    spec_time_step: 0.01
+    min_segment_length: 0.1
+    eps: 0.2
+    num_trials: 3
+plots:
+  percentages_distribution: 
+    - 50
+    - 90
+statistics: 
+  BS1:
+    compute_speakers: False
+    top_percent: False
+    f_value: true
+    k_values: [1, 5, 10, 40]
+
+  BS2:
+    compute_speakers: True
+    top_percent:
+      - [0, 16.67]
+      - [16.68, 38.89]
+    k_values: [1, 5, 10, 40]
+    
+  BS3:
+    compute_speakers: True
+    top_percent:
+      - [0, 16.33]
+      - [16.34, 57.14]
+    k_values: [1, 5, 10, 40]
+
+  BC:
+    compute_speakers: false
+    top_percent:
+      - [0, 14.29]
+      - [14.30, 53.57]
+    k_values: [1, 5, 10, 40]
+  HP:
+    compute_speakers: false
+    top_percent:
+      - [0, 22.95]
+      - [22.96, 65.57]
+    k_values: [1, 5, 10, 40]
+  HS1:
+    compute_speakers: False
+    top_percent:
+      - [0, 37.29]
+      - [37.3, 81.78]
+    k_values: [1, 5, 10, 40]
+  HS2:
+    top_percent:
+      - [0, 22.22]
+      - [22.23, 66.67] 
+    compute_speakers: false
+    k_values: [1, 5]
+  HW1:
+    compute_speakers: false
+    top_percent:
+      - [0, 21.73]
+      - [20.56, 82.53]
+    k_values: [1, 5, 10, 20]
+  HW2:
+    compute_speakers: false
+    top_percent:
+      - [0, 9.3]
+      - [9.31, 54.55]
+    k_values: [1, 5, 10, 40]
+
+  HU1:
+    compute_speakers: false
+    top_percent:
+      - [0, 50]
+      - [51, 90]
+    k_values: [1,5]
+  HU2:
+    compute_speakers: false
+    top_percent:
+      - [0, 24.62]
+      - [24.63, 77.27]
+    f_value: true
+    k_values: [1, 5, 10]
